@@ -1,8 +1,21 @@
-let screenLog = document.querySelector("#screen-log");
-document.addEventListener("mousemove", logKey);
+const horizental = document.querySelector(".horizental");
+const vertical = document.querySelector(".vertical");
+const target = document.querySelector(".target");
+const tag = document.querySelector(".tag");
 
-function logKey(e) {
-  screenLog.innerText = `
-    Screen X/Y: ${e.screenX}, ${e.screenY}
-    Client X/Y: ${e.clientX}, ${e.clientY}`;
-}
+document.addEventListener("mousemove", event => {
+  const x = event.clientX;
+  const y = event.clientY;
+  console.log(`${x} ${y}`);
+
+  vertical.style.left = `${x}px`;
+  horizental.style.top = `${y}px`;
+
+  target.style.left = `${x}px`;
+  target.style.top = `${y}px`;
+
+  tag.style.left = `${x}px`;
+  tag.style.top = `${y}px`;
+
+  tag.innerHTML = `${x}px, ${y}px`;
+});
